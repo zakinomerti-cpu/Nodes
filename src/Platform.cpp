@@ -1,22 +1,29 @@
 #include "Platform.hpp"
+
 #include "GLFW/glfw3.h"
 #include "imgui/imgui.h"
 #include "imnodes/imnodes.h"
 #include "imgui/imgui_impl_glfw.h"
 #include "imgui/imgui_impl_opengl3.h"
+
 #include "NEFrame/Formating/Fonts.hpp"
 
 Platform::Platform(int width, int height, const char* title) {
     glfwInit();
+
     this->m_width = 0;
     this->m_height = 0;
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
+
     this->nodesEditorWindow = glfwCreateWindow(width, height, title, NULL, NULL);
+
     if (!nodesEditorWindow) {
         glfwTerminate();
+
         return;
     }
 
@@ -24,15 +31,17 @@ Platform::Platform(int width, int height, const char* title) {
     this->m_onUpdate = NULL;
     this->m_onDestroy = NULL;
     this->m_shouldClose = 0;
+
     glfwMakeContextCurrent(nodesEditorWindow);
     glfwSwapInterval(1);
-
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImNodes::CreateContext();
+
     ImGuiIO& io = ImGui::GetIO();
     (void)io;
+
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
 
@@ -49,7 +58,9 @@ Platform::Platform(int width, int height, const char* title) {
     Font::calibri_20 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 20);
     Font::calibri_22 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 22);
     Font::calibri_24 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 24);
+
     ImGui::StyleColorsDark();
+
     ImGui_ImplGlfw_InitForOpenGL(nodesEditorWindow, true);
     ImGui_ImplOpenGL3_Init();
 }
@@ -81,13 +92,18 @@ int Platform::getHeingt() {
 }
 
 void Platform::init() {
-    if (this->m_onStart) this->m_onStart();
+    if (this->m_onStart) {
+        this->m_onStart();
+    }
 }
 
 void Platform::render() {
     if (glfwWindowShouldClose(nodesEditorWindow)) {
         this->m_shouldClose = true;
-        if (this->m_onDestroy) this->m_onDestroy();
+
+        if (this->m_onDestroy) {
+            this->m_onDestroy();
+        }
 
         ImGui_ImplOpenGL3_Shutdown();
         ImGui_ImplGlfw_Shutdown();
@@ -96,18 +112,24 @@ void Platform::render() {
         ImGui::DestroyContext();
         glfwDestroyWindow(this->nodesEditorWindow);
         glfwTerminate();
+
         return;
     }
+
     glfwPollEvents();
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
+
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
+
     if (this->m_onUpdate) {
         this->m_onUpdate(this->m_width, this->m_height);
     }
+
     ImGui::Render();
+
     glfwGetFramebufferSize(nodesEditorWindow, &this->m_width, &this->m_height);
     glViewport(0, 0, this->m_width, m_height);
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

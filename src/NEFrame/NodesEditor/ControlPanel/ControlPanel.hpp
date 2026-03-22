@@ -33,6 +33,8 @@ public:
 		NodesDB* nodesDB, 
 		Linker* linker
 	);
+
+	ControlPanel(const CONTROL_PANEL_PARAMS& params);
 	~ControlPanel();
 
 	void draw(ImVec2 pos);

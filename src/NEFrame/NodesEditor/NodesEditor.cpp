@@ -1,10 +1,13 @@
 #include "NodesEditor.hpp"
 
+#include <Windows.h>
+#include <imnodes/imnodes.h>
 #include <imgui/imgui.h>
+
+#include "NEFrame/Formating/MouseButtons.hpp"
 #include "NEFrame/Linker/Linker.hpp"
 #include "ControlPanel/ControlPanel.hpp"
 #include "NEFrame/NodesDB/NodesDB.hpp"
-#include <Windows.h>
 
 NodesEditor::NodesEditor(
     NodesDB* nodesDB,
@@ -14,24 +17,19 @@ NodesEditor::NodesEditor(
     this->nodesDB = nodesDB;
     this->linker = linker;
     this->controlPanel = controlPanel;
-    
-    this->padding = (ImVec2*)malloc(sizeof(ImVec2));
-    *this->padding = ImVec2(10, 10);
 
-    this->fieldPos = (ImVec2*)malloc(sizeof(ImVec2));
-    *this->fieldPos = ImVec2(0, 0);
 
-    this->lastMausePos = (ImVec2*)malloc(sizeof(ImVec2));
-    *this->lastMausePos = ImVec2(0, 0);
-
+    this->padding = new ImVec2(10, 10);
+    this->fieldPos = new ImVec2(0, 0);
+    this->lastMausePos = new ImVec2(0, 0);
     this->miniMapSizeHint = 0.15f;
 
     this->moveFieldButtonNumber = MouseButton::RIGHT;
     this->controlPanelButtonNumber = MouseButton::NEAR_SIDE;
 
-    this->drawNodes = [](Node* node) 
+    this->drawNodes = [](Node* node)
         {
-            node->draw(); 
+            node->draw();
         };
 
     this->drawLinks = [](LinkInfo* linkInfo)
@@ -45,7 +43,9 @@ NodesEditor::NodesEditor(
 }
 
 NodesEditor::~NodesEditor() {
-    
+    delete this->fieldPos;
+    delete this->lastMausePos;
+    delete this->padding;
 }
 
 void NodesEditor::draw(ImVec2* pos, ImVec2* size)
@@ -55,11 +55,11 @@ void NodesEditor::draw(ImVec2* pos, ImVec2* size)
     ImGui::SetNextWindowSize(*size);
     ImGui::SetNextWindowPos(*pos);
     ImGui::Begin(
-        "nodes", 
-        0, 
-        ImGuiWindowFlags_NoMove | 
+        "nodes",
+        0,
+        ImGuiWindowFlags_NoMove |
         ImGuiWindowFlags_NoResize |
-        ImGuiWindowFlags_NoTitleBar | 
+        ImGuiWindowFlags_NoTitleBar |
         ImGuiWindowFlags_NoBackground
     );
 
@@ -69,7 +69,6 @@ void NodesEditor::draw(ImVec2* pos, ImVec2* size)
             this->fieldPos->y
         )
     );
-
 
     ImNodes::BeginNodeEditor();
 
@@ -82,8 +81,6 @@ void NodesEditor::draw(ImVec2* pos, ImVec2* size)
 
     ImNodes::EndNodeEditor();
 
-    
-   
     ImGui::End();
 
     popStyles();
@@ -124,7 +121,7 @@ void NodesEditor::pushStyles()
             IM_COL32(48, 144, 214, 255)
         );
     }
-    
+
     { // Настройки / цвет поля с нодами
         ImGui::PushStyleVar(
             ImGuiStyleVar_WindowPadding,
@@ -145,7 +142,7 @@ void NodesEditor::popStyles()
         ImNodes::PopColorStyle();
         ImNodes::PopColorStyle();
     }
-    
+
     { // Для поля с нодами
         ImNodes::PopColorStyle();
         ImGui::PopStyleVar();
@@ -160,7 +157,7 @@ void NodesEditor::drawCreationWindow(ImVec2* editorPos, ImVec2* editorSize)
 
 void NodesEditor::checkMouseEvents()
 {
-    if (ImNodes::IsEditorHovered()) 
+    if (ImNodes::IsEditorHovered())
     {
         if (ImGui::IsMouseClicked(this->moveFieldButtonNumber)) // Проверка на нажатие правой кнопки мыши
         {

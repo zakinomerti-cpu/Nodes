@@ -22,9 +22,6 @@ typedef std::unordered_map<uint, l2ilist> grh;
 typedef std::unordered_map<uint, nlist::iterator> nmap;
 typedef std::unordered_map<uint, lilist::iterator> limap;
 
-typedef std::function<void(Node*)> onf;
-typedef std::function<void(LinkInfo*)> olif;
-
 typedef std::list<std::pair<nodeptr, uint>> nplist;
 typedef std::pair<nodeptr, nodeptr> nodepair;
 
@@ -40,8 +37,8 @@ private:
 	limap linkInfoMap;
 
 public:
-	void doOverNodes(onf& func);
-	void doOverLinks(olif& func);
+	void doOverNodes(std::function<void(Node*)> func);
+	void doOverLinks(std::function<void(LinkInfo*)> func);
 
 	nodeptr getNode(uint nodeID);
 	liptr getLinkInfo(uint linkID);

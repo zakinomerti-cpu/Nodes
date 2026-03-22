@@ -26,6 +26,10 @@ ControlPanel::ControlPanel(
     changeToMainMenu();
 }
 
+ControlPanel::ControlPanel(const CONTROL_PANEL_PARAMS& params)
+{
+}
+
 ControlPanel::~ControlPanel()
 {
     this->nodeBuilders.clear();
