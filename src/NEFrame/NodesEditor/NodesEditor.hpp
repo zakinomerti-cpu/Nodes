@@ -5,12 +5,18 @@
 #include "NEFrame/Formating/MouseButtons.hpp"
 #include "NEFrame/NodesDB/NodesDB.hpp"
 
-typedef struct Linker Linker;
-typedef struct NodesDB NodesDB;
-typedef struct ControlPanel ControlPanel;
-typedef struct ImVec2 ImVec2;
-typedef struct Node Node;
-typedef struct LinkInfo LinkInfo;
+class Linker;
+class NodesDB;
+class ControlPanel;
+class ImVec2;
+class Node;
+class LinkInfo;
+
+struct NODES_EDITOR_PARAMS {
+	ControlPanel* pControlPanel;
+	NodesDB* pNodesDB;
+	Linker* pLinker;
+};
 
 
 class NodesEditor {
@@ -37,6 +43,7 @@ public:
 		Linker* linker, 
 		ControlPanel* controlPanel
 	);
+	NodesEditor(const NODES_EDITOR_PARAMS& params);
 	~NodesEditor();
 
 	void draw(

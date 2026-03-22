@@ -19,7 +19,7 @@ int main(void) {
 
 
     // Create platform window (stack allocated, no need to delete)
-    Platform plt(1024, 768, "Nodes editor");
+    Platform plt(1024, 600, "Nodes editor");
     NEFrame neFrame;
 
 

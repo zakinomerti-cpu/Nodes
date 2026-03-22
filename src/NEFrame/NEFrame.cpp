@@ -22,34 +22,9 @@
 
 
 //-----------------------------------------------------------------------------
-// Structure for ControlPanel creation parameters
-//-----------------------------------------------------------------------------
-struct CONTROL_PANEL_PARAMS
-{
-    ImVec2      vInitialSize;
-    NodesDB*    pNodesDB;
-    Linker*     pLinker;
-};
-
-
-
-//-----------------------------------------------------------------------------
-// Structure for NodesEditor creation parameters
-//-----------------------------------------------------------------------------
-struct NODES_EDITOR_PARAMS
-{
-    NodesDB* pNodesDB;
-    Linker* pLinker;
-    ControlPanel* pControlPanel;
-};
-
-
-
-//-----------------------------------------------------------------------------
 // Structure for node builder creation parameters
 //-----------------------------------------------------------------------------
-struct NODE_BUILDER_PARAMS
-{
+struct NODE_BUILDER_PARAMS {
     std::function<std::shared_ptr<Node>()> pfnCreator;
     const char* pszClassName;
 };
@@ -100,6 +75,10 @@ NEFrame::NEFrame() {
 }
 
 NEFrame::~NEFrame() {
+
+    
+
+    //cleanup
     delete m_pNodesDB;
     delete m_pLinker;
     delete m_pControlPanel;
@@ -108,44 +87,44 @@ NEFrame::~NEFrame() {
     delete m_pShaderPath;
 }
 
-void NEFrame::fillControlPanel() {
-    this->m_pControlPanel->addNodeBuilder(
-        NodeBuilder(
-            []() {return std::make_shared<IntStorage>();  },
-            IntStorage::CLASS_NAME
-        )
-    );
-
-    this->m_pControlPanel->addNodeBuilder(
-        NodeBuilder(
-            []() {return std::make_shared<FloatStorage>();  },
-            FloatStorage::CLASS_NAME
-        )
-    );
-
-    this->m_pControlPanel->addNodeBuilder(
-        NodeBuilder(
-            []() {return std::make_shared<ColorEditor>();  },
-            ColorEditor::CLASS_NAME
-        )
-    );
-
-    this->m_pControlPanel->addNodeBuilder(
-        NodeBuilder(
-            [this]() {return std::make_shared<MultStrEditor>(this->m_pFileHandler, "shaderTXT.txt");  },
-            MultStrEditor::CLASS_NAME
-        )
-    );
+void NEFrame::fillControlPanel()
+{
 
 
-    this->m_pControlPanel->addNodeBuilder(
-        NodeBuilder(
-            []() {return std::make_shared<FPSNode>();  },
-            FPSNode::CLASS_NAME
-        )
-    );
+
+    // Define node builder parameters
+    const NODE_BUILDER_PARAMS aNodeParams[] =
+    {
+        { []() { return std::make_shared<IntStorage>();  },   
+            IntStorage::CLASS_NAME.c_str()},
+        { []() { return std::make_shared<FloatStorage>(); },   
+            FloatStorage::CLASS_NAME.c_str() },
+        { []() { return std::make_shared<ColorEditor>(); },    
+            ColorEditor::CLASS_NAME.c_str()  },
+        { [this]() { return std::make_shared<MultStrEditor>
+            (m_pFileHandler, "shaderTXT.txt"); }, 
+            MultStrEditor::CLASS_NAME.c_str() },
+        { []() { return std::make_shared<FPSNode>(); },        
+            FPSNode::CLASS_NAME.c_str()      }
+    };
+
+
+
+    // Register all node types
+    const int dwNumNodes = sizeof(aNodeParams) / sizeof(aNodeParams[0]);
+    for (int i = 0; i < dwNumNodes; i++) {
+        m_pControlPanel->addNodeBuilder(
+            NodeBuilder(aNodeParams[i].pfnCreator, aNodeParams[i].pszClassName)
+        );
+    }
 }
 
+
+
+//-----------------------------------------------------------------------------
+// Name: Draw()
+// Desc: Renders the main frame and all its child components
+//-----------------------------------------------------------------------------
 void NEFrame::draw(int width, int height) {
     ImVec2 LeftUp = ImVec2(0, 0);
     ImVec2 RightDown = ImVec2(width, height);

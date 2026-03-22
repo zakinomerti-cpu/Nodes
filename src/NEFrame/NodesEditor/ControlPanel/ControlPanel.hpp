@@ -2,12 +2,21 @@
 #define _CONTROL_PANEL_
 
 # include <imgui/imgui.h>
-
 #include "NeFrame/NodesDB/NodesDB.hpp"
 #include "NeFrame/NodesEditor/Nodes/Node/NodeBuilder.hpp"
 #include "NeFrame/Linker/Linker.hpp"
 
 typedef std::list<NodeBuilder> nblist;
+
+//-----------------------------------------------------------------------------
+// Structure for ControlPanel creation parameters
+//-----------------------------------------------------------------------------
+struct CONTROL_PANEL_PARAMS
+{
+	ImVec2      vInitialSize;
+	NodesDB* pNodesDB;
+	Linker* pLinker;
+};
 
 class ControlPanel {
 private:

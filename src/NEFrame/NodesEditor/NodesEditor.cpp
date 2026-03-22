@@ -42,6 +42,35 @@ NodesEditor::NodesEditor(
         };
 }
 
+NodesEditor::NodesEditor(const NODES_EDITOR_PARAMS& params) {
+    this->nodesDB = params.pNodesDB;
+    this->linker = params.pLinker;
+    this->controlPanel = params.pControlPanel;
+
+
+    this->padding = new ImVec2(10, 10);
+    this->fieldPos = new ImVec2(0, 0);
+    this->lastMausePos = new ImVec2(0, 0);
+    this->miniMapSizeHint = 0.15f;
+
+    this->moveFieldButtonNumber = MouseButton::RIGHT;
+    this->controlPanelButtonNumber = MouseButton::NEAR_SIDE;
+
+    this->drawNodes = [](Node* node)
+        {
+            node->draw();
+        };
+
+    this->drawLinks = [](LinkInfo* linkInfo)
+        {
+            ImNodes::Link(
+                linkInfo->getLinkID(),
+                linkInfo->getOutPointID(),
+                linkInfo->getInPointID()
+            );
+        };
+}
+
 NodesEditor::~NodesEditor() {
     delete this->fieldPos;
     delete this->lastMausePos;

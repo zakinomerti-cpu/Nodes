@@ -26,8 +26,25 @@ ControlPanel::ControlPanel(
     changeToMainMenu();
 }
 
-ControlPanel::ControlPanel(const CONTROL_PANEL_PARAMS& params)
-{
+ControlPanel::ControlPanel(const CONTROL_PANEL_PARAMS& params) {
+    this->nodesDB = params.pNodesDB;
+    this->linker = params.pLinker;
+
+    this->size = params.vInitialSize;
+
+    this->padding = ImVec2(
+        this->size.x * 0.05f,
+        this->size.x * 0.05f
+    );
+
+    this->buttonSizeHint = 0.35f;
+
+    this->active = false;
+
+    createMainMenu();
+    createCreationMenu();
+
+    changeToMainMenu();
 }
 
 ControlPanel::~ControlPanel()
