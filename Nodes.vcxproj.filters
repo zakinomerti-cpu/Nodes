@@ -200,7 +200,7 @@
     <ClInclude Include="include\imnodes\imnodes_internal.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\Platform.hpp">
+    <ClInclude Include="src\Platform.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
