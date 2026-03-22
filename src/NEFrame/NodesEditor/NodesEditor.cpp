@@ -1,10 +1,17 @@
 #include "NodesEditor.hpp"
 
+// Добавленные заголовки для полных определений
+#include "NEFrame/NodesEditor/Nodes/Node/Node.hpp"
+#include "NEFrame/Formating/LinkInfo.hpp"
+#include <imnodes/imnodes.h>  // если это отдельная библиотека
+
 #include <imgui/imgui.h>
 #include "NEFrame/Linker/Linker.hpp"
 #include "ControlPanel/ControlPanel.hpp"
 #include "NEFrame/NodesDB/NodesDB.hpp"
 #include <Windows.h>
+
+// ... остальной код без изменений
 
 NodesEditor::NodesEditor(
     NodesDB* nodesDB,

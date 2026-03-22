@@ -40,8 +40,8 @@ private:
 	limap linkInfoMap;
 
 public:
-	void doOverNodes(onf& func);
-	void doOverLinks(olif& func);
+	void doOverNodes(std::function<void(Node*)> func);
+	void doOverLinks(std::function<void(LinkInfo*)> func);
 
 	nodeptr getNode(uint nodeID);
 	liptr getLinkInfo(uint linkID);

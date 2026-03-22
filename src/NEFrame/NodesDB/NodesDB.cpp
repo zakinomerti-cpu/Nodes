@@ -1,7 +1,7 @@
 #include "NodesDB.hpp"
 #include <iostream>
 
-void NodesDB::doOverNodes(onf& func)
+void NodesDB::doOverNodes(std::function<void(Node*)> func)
 {
 	for (nodeptr node: this->nodes)
 	{
@@ -9,7 +9,7 @@ void NodesDB::doOverNodes(onf& func)
 	}
 }
 
-void NodesDB::doOverLinks(olif& func)
+void NodesDB::doOverLinks(std::function<void(LinkInfo*)> func)
 {
 	for (liptr linkInfo: this->links)
 	{
