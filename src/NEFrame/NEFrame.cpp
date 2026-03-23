@@ -5,9 +5,10 @@
 
 #include "NEFrame.hpp"
 #include "NEFrame/NodesEditor/NodesEditor.hpp"
-#include "NEFrame/NodesEditor/ControlPanel/ControlPanel.hpp"
+
+#include "NEFrame/Linker/Linker.hpp"
+#include "NEFrame/NodesDB/NodesDB.hpp"
 #include "FileHandler.hpp"
-#include "BaseNodes.hpp"
 
 
 
@@ -26,26 +27,11 @@ NEFrame::NEFrame() {
 
 
 
-    // Setup ControlPanel parameters
-    CONTROL_PANEL_PARAMS cpParams;
-    cpParams.vInitialSize = ImVec2(250, 120);
-    cpParams.pNodesDB = m_pNodesDB;
-    cpParams.pLinker = m_pLinker;
-    m_pControlPanel = new ControlPanel(cpParams);
-
-
-
     // Setup NodesEditor parameters
     NODES_EDITOR_PARAMS neParams;
     neParams.pNodesDB = m_pNodesDB;
     neParams.pLinker = m_pLinker;
-    neParams.pControlPanel = m_pControlPanel;
     m_pNodesEditor = new NodesEditor(neParams);
-
-
-
-    // Fill control panel with node builders
-    FillControlPanel(m_pControlPanel);
 
 
 
@@ -58,7 +44,6 @@ NEFrame::~NEFrame() {
     //cleanup
     delete m_pNodesDB;
     delete m_pLinker;
-    delete m_pControlPanel;
     delete m_pNodesEditor;
     delete m_pFileHandler;
 }
@@ -71,8 +56,9 @@ NEFrame::~NEFrame() {
 //-----------------------------------------------------------------------------
 void NEFrame::draw(int width, int height) {
 
+    
 
-
+    //window pos
     ImVec2 LeftUp = ImVec2(0, 0);
     ImVec2 RightDown = ImVec2(width, height);
     this->m_pNodesEditor->draw(&LeftUp, &RightDown);

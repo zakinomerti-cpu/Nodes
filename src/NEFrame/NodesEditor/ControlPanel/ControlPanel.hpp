@@ -14,8 +14,8 @@ typedef std::list<NodeBuilder> nblist;
 struct CONTROL_PANEL_PARAMS
 {
 	ImVec2      vInitialSize;
-	NodesDB* pNodesDB;
-	Linker* pLinker;
+	NodesDB*	pNodesDB;
+	Linker*		pLinker;
 };
 
 class ControlPanel {

@@ -1,82 +1,97 @@
+//-----------------------------------------------------------------------------
+// File: NodesEditor.cpp
+// Copyright (c) NIKITOS-V. All rights pirated nahyi
+//-----------------------------------------------------------------------------
 #include "NodesEditor.hpp"
 
-#include <Windows.h>
-#include <imnodes/imnodes.h>
+
+// imgui
 #include <imgui/imgui.h>
+#include <imnodes/imnodes.h>
 
+
+// neframe core components
 #include "NEFrame/Formating/MouseButtons.hpp"
-#include "NEFrame/Linker/Linker.hpp"
-#include "ControlPanel/ControlPanel.hpp"
 #include "NEFrame/NodesDB/NodesDB.hpp"
-
-NodesEditor::NodesEditor(
-    NodesDB* nodesDB,
-    Linker* linker,
-    ControlPanel* controlPanel
-){
-    this->nodesDB = nodesDB;
-    this->linker = linker;
-    this->controlPanel = controlPanel;
+#include "NEFrame/Linker/Linker.hpp"
+#include "NEFrame/BaseNodes.hpp"
 
 
-    this->padding = new ImVec2(10, 10);
-    this->fieldPos = new ImVec2(0, 0);
-    this->lastMausePos = new ImVec2(0, 0);
-    this->miniMapSizeHint = 0.15f;
+// control panel node definition
+#include "ControlPanel/ControlPanel.hpp"
 
-    this->moveFieldButtonNumber = MouseButton::RIGHT;
-    this->controlPanelButtonNumber = MouseButton::NEAR_SIDE;
 
-    this->drawNodes = [](Node* node)
-        {
-            node->draw();
-        };
+//windows system header
+#include <Windows.h>
 
-    this->drawLinks = [](LinkInfo* linkInfo)
-        {
-            ImNodes::Link(
-                linkInfo->getLinkID(),
-                linkInfo->getOutPointID(),
-                linkInfo->getInPointID()
-            );
-        };
-}
 
+
+//-----------------------------------------------------------------------------
+// Name: NEFrame()
+// Desc: Constructor for the main frame class ( like Class App )
+//-----------------------------------------------------------------------------
 NodesEditor::NodesEditor(const NODES_EDITOR_PARAMS& params) {
-    this->nodesDB = params.pNodesDB;
-    this->linker = params.pLinker;
-    this->controlPanel = params.pControlPanel;
 
 
-    this->padding = new ImVec2(10, 10);
-    this->fieldPos = new ImVec2(0, 0);
-    this->lastMausePos = new ImVec2(0, 0);
+
+    // initial core componets
+    this->nodesDB         = params.pNodesDB;
+    this->linker          = params.pLinker;
+    
+
+
+    CONTROL_PANEL_PARAMS cpParams;
+    cpParams.vInitialSize = ImVec2(200, 150);
+    cpParams.pLinker = this->linker;
+    cpParams.pNodesDB = this->nodesDB;
+    this->controlPanel = new ControlPanel(cpParams);
+    FillControlPanel(this->controlPanel);
+
+
+
+    // create core components
+    this->padding         = new ImVec2(10, 10);
+    this->fieldPos        = new ImVec2(0, 0);
+    this->lastMausePos    = new ImVec2(0, 0);
     this->miniMapSizeHint = 0.15f;
 
-    this->moveFieldButtonNumber = MouseButton::RIGHT;
-    this->controlPanelButtonNumber = MouseButton::NEAR_SIDE;
 
-    this->drawNodes = [](Node* node)
-        {
+
+    //  fill mouse button id's
+    this->moveFieldButtonNumber     = MouseButton::RIGHT;
+    this->controlPanelButtonNumber  = MouseButton::NEAR_SIDE;
+
+    this->drawNodes = [](Node* node) {
             node->draw();
-        };
+    };
 
-    this->drawLinks = [](LinkInfo* linkInfo)
-        {
+    this->drawLinks = [](LinkInfo* linkInfo) {
             ImNodes::Link(
                 linkInfo->getLinkID(),
                 linkInfo->getOutPointID(),
                 linkInfo->getInPointID()
             );
-        };
+     };
 }
 
+
+
+//-----------------------------------------------------------------------------
+// Name: NEFrame()
+// Desc: Destructor for the main frame class ( like Class App )
+//-----------------------------------------------------------------------------
 NodesEditor::~NodesEditor() {
     delete this->fieldPos;
     delete this->lastMausePos;
     delete this->padding;
 }
 
+
+
+//-----------------------------------------------------------------------------
+// Name: NEFrame()
+// Desc: Destructor for the main frame class ( like Class App )
+//-----------------------------------------------------------------------------
 void NodesEditor::draw(ImVec2* pos, ImVec2* size)
 {
     pushStyles();
@@ -122,6 +137,12 @@ void NodesEditor::draw(ImVec2* pos, ImVec2* size)
     }
 }
 
+
+
+//-----------------------------------------------------------------------------
+// Name: NEFrame()
+// Desc: Destructor for the main frame class ( like Class App )
+//-----------------------------------------------------------------------------
 void NodesEditor::setMoveFieldButton(MouseButton mouseButton)
 {
     this->moveFieldButtonNumber = mouseButton;
@@ -132,6 +153,12 @@ void NodesEditor::setControlPanelButton(MouseButton mouseButton)
     this->moveFieldButtonNumber = mouseButton;
 }
 
+
+
+//-----------------------------------------------------------------------------
+// Name: NEFrame()
+// Desc: Destructor for the main frame class ( like Class App )
+//-----------------------------------------------------------------------------
 void NodesEditor::pushStyles()
 {
     { // ÷вет зв€зи
@@ -178,6 +205,12 @@ void NodesEditor::popStyles()
     }
 }
 
+
+
+//-----------------------------------------------------------------------------
+// Name: NEFrame()
+// Desc: Destructor for the main frame class ( like Class App )
+//-----------------------------------------------------------------------------
 void NodesEditor::drawCreationWindow(ImVec2* editorPos, ImVec2* editorSize)
 {
     ImVec2 winPos = ImVec2(this->lastMausePos->x, this->lastMausePos->y);
@@ -208,8 +241,13 @@ void NodesEditor::checkMouseEvents()
     }
 }
 
-void NodesEditor::moveField()
-{
+
+
+//-----------------------------------------------------------------------------
+// Name: NEFrame()
+// Desc: Destructor for the main frame class ( like Class App )
+//-----------------------------------------------------------------------------
+void NodesEditor::moveField() {
     ImVec2 mousePos = ImGui::GetMousePos();
 
     this->fieldPos->x = (fieldPos->x + mousePos.x - lastMausePos->x);
@@ -219,14 +257,25 @@ void NodesEditor::moveField()
     lastMausePos->y = (mousePos.y);
 }
 
-void NodesEditor::updateLastMausePos()
-{
+
+
+//-----------------------------------------------------------------------------
+// Name: NEFrame()
+// Desc: Destructor for the main frame class ( like Class App )
+//-----------------------------------------------------------------------------
+void NodesEditor::updateLastMausePos() {
     ImVec2 mousePos = ImGui::GetMousePos();
 
     lastMausePos->x = mousePos.x;
     lastMausePos->y = mousePos.y;
 }
 
+
+
+//-----------------------------------------------------------------------------
+// Name: NEFrame()
+// Desc: Destructor for the main frame class ( like Class App )
+//-----------------------------------------------------------------------------
 ImVec2* NodesEditor::getCorrectCoord(ImVec2* winPos, ImVec2* editorPos, ImVec2* editorSize)
 {
     ImVec2* correctPos = (ImVec2*)malloc(sizeof(ImVec2));

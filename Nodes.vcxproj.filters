@@ -16,100 +16,112 @@
     <Filter Include="Файлы заголовков\imgui">
       <UniqueIdentifier>{2b50bc74-9ce9-41c1-aea2-1b6d9c7d9e59}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\imgui">
+      <UniqueIdentifier>{eceba299-080f-497c-8702-6158b80b0b84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\core">
+      <UniqueIdentifier>{f82fd686-88f1-489a-ae60-1c512d721058}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\neframe">
+      <UniqueIdentifier>{5f27b158-4faa-4229-bc99-e408f15f9c60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\baseNodes">
+      <UniqueIdentifier>{763a4c7f-e8ff-4bd9-ac5a-a41385459549}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="src\NEFrame\Formating\Fonts.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\Formating\InPointData.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\Formating\LinkInfo.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\Linker\Linker.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NodesDB\NodesDB.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NodesEditor\ControlPanel\ControlPanel.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\ColorEditor\ColorEditor.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\FloatStorage\FloatStorage.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\FPSNode\FPSNode.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\IntStorage\IntStorage.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\MultStrEditor\MultStrEditor.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\Node\Node.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\Node\NodeBuilder.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NodesEditor\NodesEditor.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NEFrame.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\WindowNE.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\FileHandler.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="include\imgui\imgui.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="include\imgui\imgui_demo.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="include\imgui\imgui_draw.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="include\imgui\imgui_impl_glfw.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="include\imgui\imgui_impl_opengl3.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="include\imgui\imgui_stdlib.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="include\imgui\imgui_tables.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="include\imgui\imgui_widgets.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="include\imnodes\imnodes.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\ShaderVisualizer\ShaderVisualizer.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="src\glad.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="include\imgui\imgui.cpp">
+      <Filter>Исходные файлы\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imgui\imgui_demo.cpp">
+      <Filter>Исходные файлы\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imgui\imgui_draw.cpp">
+      <Filter>Исходные файлы\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imgui\imgui_impl_glfw.cpp">
+      <Filter>Исходные файлы\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Исходные файлы\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imgui\imgui_stdlib.cpp">
+      <Filter>Исходные файлы\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imgui\imgui_tables.cpp">
+      <Filter>Исходные файлы\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imgui\imgui_widgets.cpp">
+      <Filter>Исходные файлы\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\imnodes\imnodes.cpp">
+      <Filter>Исходные файлы\imgui</Filter>
+    </ClCompile>
     <ClCompile Include="src\NEFrame\BaseNodes.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\baseNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\ColorEditor\ColorEditor.cpp">
+      <Filter>Исходные файлы\baseNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesEditor\ControlPanel\ControlPanel.cpp">
+      <Filter>Исходные файлы\baseNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\FloatStorage\FloatStorage.cpp">
+      <Filter>Исходные файлы\baseNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\FPSNode\FPSNode.cpp">
+      <Filter>Исходные файлы\baseNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\Linker\Linker.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileHandler.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\Formating\InPointData.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\Formating\LinkInfo.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\MultStrEditor\MultStrEditor.cpp">
+      <Filter>Исходные файлы\baseNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\IntStorage\IntStorage.cpp">
+      <Filter>Исходные файлы\baseNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NEFrame.cpp">
+      <Filter>Исходные файлы\neframe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\Formating\Fonts.cpp">
+      <Filter>Исходные файлы\neframe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\Node\Node.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\Node\NodeBuilder.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesDB\NodesDB.cpp">
+      <Filter>Исходные файлы\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesEditor\NodesEditor.cpp">
+      <Filter>Исходные файлы\neframe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform.cpp">
+      <Filter>Исходные файлы\neframe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\ShaderVisualizer\ShaderVisualizer.cpp">
+      <Filter>Исходные файлы\baseNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\WindowNE.cpp">
+      <Filter>Исходные файлы\neframe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
