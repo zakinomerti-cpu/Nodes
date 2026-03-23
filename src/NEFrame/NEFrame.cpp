@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
 // File: NEFrame.cpp
-// Copyright (c) NIKITOS-V. All rights pirated nahyi
+// Copyright (c) NIKITOS-V. All rights pirated nahyi2
 //-----------------------------------------------------------------------------
 
 #include "NEFrame.hpp"
