@@ -48,7 +48,7 @@ private:
 
 	uint nodePinCol;
 	uint nodePinHoveredCol;
-	
+
 public:
 	Node(std::string title);
 

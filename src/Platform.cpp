@@ -1,12 +1,5 @@
 #include "Platform.hpp"
-
-#include "GLFW/glfw3.h"
-#include "imgui/imgui.h"
-#include "imnodes/imnodes.h"
-#include "imgui/imgui_impl_glfw.h"
-#include "imgui/imgui_impl_opengl3.h"
-
-#include "NEFrame/Formating/Fonts.hpp"
+#include "SharedImGui.hpp"
 
 Platform::Platform(int width, int height, const char* title) {
     glfwInit();
@@ -46,18 +39,17 @@ Platform::Platform(int width, int height, const char* title) {
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
 
     //fillFonts(&io); // заполнение шрифтов
-    Font::arial_18 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Arial.ttf", 18); // Стандартный шрифт
+    io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Arial.ttf", 18); // Стандартный шрифт
+    io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Arial.ttf", 16);
+    io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Arial.ttf", 20);
+    io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Arial.ttf", 22);
+    io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Arial.ttf", 24);
 
-    Font::arial_16 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Arial.ttf", 16);
-    Font::arial_20 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Arial.ttf", 20);
-    Font::arial_22 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Arial.ttf", 22);
-    Font::arial_24 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Arial.ttf", 24);
-
-    Font::calibri_16 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 16);
-    Font::calibri_18 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 18);
-    Font::calibri_20 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 20);
-    Font::calibri_22 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 22);
-    Font::calibri_24 = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 24);
+    io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 16);
+    io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 18);
+    io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 20);
+    io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 22);
+    io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Calibri.ttf", 24);
 
     ImGui::StyleColorsDark();
 

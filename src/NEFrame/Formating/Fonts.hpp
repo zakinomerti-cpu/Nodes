@@ -9,7 +9,7 @@ namespace Font {
 	extern ImFont* arial_20;
 	extern ImFont* arial_22;
 	extern ImFont* arial_24;
-	
+
 	extern ImFont* calibri_16;
 	extern ImFont* calibri_18;
 	extern ImFont* calibri_20;

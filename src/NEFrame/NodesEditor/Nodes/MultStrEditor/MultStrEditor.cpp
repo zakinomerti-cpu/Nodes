@@ -10,6 +10,7 @@ MultStrEditor::MultStrEditor(FileHandler* fileHandler, std::string filePath): No
 	this->textFieldWidth = 800.0f;
 	this->textFieldHeight = 500.0f;
 
+
 	addNodeDrawPath(
 		[this]() {
 			if (ImGui::Button("Save", ImVec2(this->textFieldWidth, 25.0f)))

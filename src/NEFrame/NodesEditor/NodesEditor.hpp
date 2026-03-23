@@ -39,8 +39,8 @@ private:
 
 public:
 	NodesEditor(
-		NodesDB* nodesDB, 
-		Linker* linker, 
+		NodesDB* nodesDB,
+		Linker* linker,
 		ControlPanel* controlPanel
 	);
 	NodesEditor(const NODES_EDITOR_PARAMS& params);

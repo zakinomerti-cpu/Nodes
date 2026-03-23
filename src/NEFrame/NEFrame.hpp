@@ -14,6 +14,7 @@ class NodesEditor;
 class NodesDB;
 class Linker;
 class FileHandler;
+
 class ControlPanel;
 
 
@@ -33,14 +34,11 @@ private:
     NodesDB*        m_pNodesDB;
     Linker*         m_pLinker;
     FileHandler*    m_pFileHandler;
+
+
+
+    // main node
     ControlPanel*   m_pControlPanel;
-    char*           m_pShaderPath;
-
-
-
-    //-------------------------------------------------------------------------
-    // Private member funcions
-    void            fillControlPanel();
 
 
 
@@ -52,6 +50,7 @@ public:
     // Public methods
     NEFrame();
     ~NEFrame();
+
 
 
     void draw(int width, int height);

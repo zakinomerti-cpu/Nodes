@@ -29,7 +29,9 @@
     <ClCompile Include="include\imgui\imgui_widgets.cpp" />
     <ClCompile Include="include\imnodes\imnodes.cpp" />
     <ClCompile Include="src\FileHandler.cpp" />
+    <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\NEFrame\BaseNodes.cpp" />
     <ClCompile Include="src\NEFrame\Formating\Fonts.cpp" />
     <ClCompile Include="src\NEFrame\Formating\InPointData.cpp" />
     <ClCompile Include="src\NEFrame\Formating\LinkInfo.cpp" />
@@ -45,6 +47,7 @@
     <ClCompile Include="src\NEFrame\NodesEditor\Nodes\MultStrEditor\MultStrEditor.cpp" />
     <ClCompile Include="src\NEFrame\NodesEditor\Nodes\Node\Node.cpp" />
     <ClCompile Include="src\NEFrame\NodesEditor\Nodes\Node\NodeBuilder.cpp" />
+    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\ShaderVisualizer\ShaderVisualizer.cpp" />
     <ClCompile Include="src\NEFrame\WindowNE.cpp" />
     <ClCompile Include="src\Platform.cpp" />
   </ItemGroup>
@@ -81,8 +84,10 @@
     <ClInclude Include="src\NEFrame\NodesEditor\Nodes\MultStrEditor\MultStrEditor.hpp" />
     <ClInclude Include="src\NEFrame\NodesEditor\Nodes\Node\Node.hpp" />
     <ClInclude Include="src\NEFrame\NodesEditor\Nodes\Node\NodeBuilder.hpp" />
+    <ClInclude Include="src\NEFrame\NodesEditor\Nodes\ShaderVisualizer\ShaderVisualizer.hpp" />
     <ClInclude Include="src\NEFrame\WindowNE.hpp" />
     <ClInclude Include="src\Platform.hpp" />
+    <ClInclude Include="src\SharedImGui.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

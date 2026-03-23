@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Файлы заголовков\imgui">
+      <UniqueIdentifier>{2b50bc74-9ce9-41c1-aea2-1b6d9c7d9e59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -99,6 +102,15 @@
     <ClCompile Include="src\Platform.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\NEFrame\NodesEditor\Nodes\ShaderVisualizer\ShaderVisualizer.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glad.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NEFrame\BaseNodes.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\NEFrame\Formating\Fonts.hpp">
@@ -164,43 +176,49 @@
     <ClInclude Include="src\FileHandler.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\imgui\imconfig.h">
+    <ClInclude Include="src\Platform.hpp">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NEFrame\NodesEditor\Nodes\ShaderVisualizer\ShaderVisualizer.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imgui\imconfig.h">
+      <Filter>Файлы заголовков\imgui</Filter>
     </ClInclude>
     <ClInclude Include="include\imgui\imgui.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\imgui</Filter>
     </ClInclude>
     <ClInclude Include="include\imgui\imgui_impl_glfw.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\imgui</Filter>
     </ClInclude>
     <ClInclude Include="include\imgui\imgui_impl_opengl3.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\imgui</Filter>
     </ClInclude>
     <ClInclude Include="include\imgui\imgui_impl_opengl3_loader.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\imgui</Filter>
     </ClInclude>
     <ClInclude Include="include\imgui\imgui_internal.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\imgui</Filter>
     </ClInclude>
     <ClInclude Include="include\imgui\imgui_stdlib.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\imgui\imstb_rectpack.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\imgui\imstb_textedit.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="include\imgui\imstb_truetype.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\imgui</Filter>
     </ClInclude>
     <ClInclude Include="include\imnodes\imnodes.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\imgui</Filter>
     </ClInclude>
     <ClInclude Include="include\imnodes\imnodes_internal.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Файлы заголовков\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform.hpp">
+    <ClInclude Include="include\imgui\imstb_rectpack.h">
+      <Filter>Файлы заголовков\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imgui\imstb_textedit.h">
+      <Filter>Файлы заголовков\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imgui\imstb_truetype.h">
+      <Filter>Файлы заголовков\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SharedImGui.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

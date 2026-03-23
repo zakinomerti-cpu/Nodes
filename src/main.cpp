@@ -5,6 +5,7 @@
 // File: Main.cpp
 // Copyright (c) NIKITOS-V. All rights pirated nahyi
 //-----------------------------------------------------------------------------
+#include "glad/glad.h"
 #include "Platform.hpp"
 #include "NeFrame/NEFrame.hpp"
 
@@ -20,6 +21,8 @@ int main(void) {
 
     // Create platform window (stack allocated, no need to delete)
     Platform plt(1024, 600, "Nodes editor");
+
+    gladLoadGL();
     NEFrame neFrame;
 
 
@@ -30,11 +33,12 @@ int main(void) {
     });
 
 
-
     // Main message loop
     while (!plt.shouldClose()) {
         plt.render();
     }
 
+
+    //exit
     return 0;
 }

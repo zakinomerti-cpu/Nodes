@@ -31,15 +31,15 @@ private:
 	float buttonSizeHint;
 
 	bool active;
-	
+
 	std::function<void(ImVec2)> drawCurentMenu;
 	std::function<void(ImVec2)> drawMainMenu;
 	std::function<void(ImVec2)> drawCreationMenu;
 
 public:
 	ControlPanel(
-		ImVec2 size, 
-		NodesDB* nodesDB, 
+		ImVec2 size,
+		NodesDB* nodesDB,
 		Linker* linker
 	);
 
